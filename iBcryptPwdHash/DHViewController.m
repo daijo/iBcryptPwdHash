@@ -8,6 +8,7 @@
 
 #import "DHViewController.h"
 #import "JFBCrypt.h"
+#import "DHPwdHashUtil.h"
 
 @interface DHViewController ()
 
@@ -19,12 +20,97 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self.hashedPasswordLabel setText:@""];
+    
+    // Get saved salt
+    [self.saltField setText:@"$2a$12$ZG78Pek0VOJ8SRf./2xB5O"];
+    
+    // Get last address
+    [self.addressField setText:@"http://www.example.com"];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Helpers
+
+- (void)copyToPasteboard:(NSString*)text
+{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = text;
+}
+
+- (void)inputEnabled:(BOOL)enabled
+{
+    [self.addressField setUserInteractionEnabled:enabled];
+    [self.saltField setUserInteractionEnabled:enabled];
+    [self.passwordField setUserInteractionEnabled:enabled];
+    [self.createButton setUserInteractionEnabled:enabled];
+    
+    if (!enabled) {
+        [self.addressField resignFirstResponder];
+        [self.saltField resignFirstResponder];
+        [self.passwordField resignFirstResponder];
+    }
+}
+
+- (void)create
+{
+    [self.infoLabel setText:@"Please wait."];
+    [self inputEnabled:NO];
+
+    // check salt
+    NSString* salt = [self.saltField text];
+    if (salt.length == 0) {
+        salt = [JFBCrypt generateSaltWithNumberOfRounds:12];
+        [self.saltField setText:salt];
+        // save salt
+    } else if (![salt hasPrefix:@"$2a$"]) {
+        // invalid salt
+    }
+    
+    NSString* address = [self.addressField text];
+    // save address to bookmarks
+    NSString* domain = [DHPwdHashUtil extractDomain:address];
+    
+    NSString* password = [self.passwordField text];
+    NSString* toBeHashed = [domain stringByAppendingString:password];
+    
+    NSString* hash = [JFBCrypt hashPassword:toBeHashed withSalt:salt];
+    NSString* result = [DHPwdHashUtil removeSalt:salt FromHash:hash];
+    result = [DHPwdHashUtil applySize:password.length + 2 AndAlphaNumerical:[DHPwdHashUtil isAlphaNumeric:password] ToPassword:result];
+    
+    // copy to clipboard
+    [self.infoLabel setText:@"Password copied to paste board."];
+    [self copyToPasteboard:result];
+    [self.hashedPasswordLabel setText:result];
+
+    [self inputEnabled:YES];
+}
+
+#pragma mark - Actions
+
+- (IBAction)createAction:(id)sender
+{
+    NSLog(@"createAction");
+    
+    [self create];
+}
+
+- (IBAction)settingsAction:(id)sender
+{
+    NSLog(@"settingsAction");
+    // launch settings view controller
+}
+
+- (IBAction)bookmarksAction:(id)sender
+{
+    NSLog(@"bookmarksAction");
+    // show bookmarks pop-over/spinner
 }
 
 @end

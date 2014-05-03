@@ -16,5 +16,10 @@
 @property IBOutlet UITextField* addressField;
 @property IBOutlet UITextField* saltField;
 @property IBOutlet UITextField* passwordField;
+@property IBOutlet UIButton* createButton;
+
+- (IBAction)createAction:(id)sender;
+- (IBAction)settingsAction:(id)sender;
+- (IBAction)bookmarksAction:(id)sender;
 
 @end
