@@ -35,7 +35,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="WCa-cN-1FL"/>
                                     <barButtonItem title="⚙" id="miJ-xV-r8S">
                                         <connections>
-                                            <action selector="settingsAction:" destination="vXZ-lx-hvc" id="zof-w7-ZjG"/>
+                                            <action selector="roundsAction:" destination="vXZ-lx-hvc" id="llz-y4-DHZ"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

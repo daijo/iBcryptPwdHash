@@ -28,7 +28,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Svb-IE-yiV"/>
                                     <barButtonItem title="⚙" id="fC6-4M-iyg">
                                         <connections>
-                                            <action selector="settingsAction:" destination="BYZ-38-t0r" id="ims-jD-OWp"/>
+                                            <action selector="roundsAction:" destination="BYZ-38-t0r" id="d3B-g2-xRa"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DHRoundsPickerHandler.h"
+#import "DHBookmarksPickerHandler.h"
+#import "DHBookmarksPickerDelegate.h"
 
-@interface DHViewController : UIViewController
+@interface DHViewController : UIViewController <DHBookmarksPickerDelegate>
+
+@property (strong, nonatomic) DHRoundsPickerHandler* roundsPickerHandler;
+@property (strong, nonatomic) DHBookmarksPickerHandler* bookmarksPickerHandler;
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintCopyright;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintBookmarks;
@@ -28,7 +34,7 @@
 @property (strong, nonatomic) IBOutlet UIPickerView* roundsPicker;
 
 - (IBAction)createAction:(id)sender;
-- (IBAction)settingsAction:(id)sender;
+- (IBAction)roundsAction:(id)sender;
 - (IBAction)bookmarksAction:(id)sender;
 
 @end

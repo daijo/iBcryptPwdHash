@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47107FE71915CBB700E94824 /* DHRoundsPickerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 47107FE61915CBB700E94824 /* DHRoundsPickerHandler.m */; };
+		47107FEA1915D40C00E94824 /* DHBookmarksPickerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 47107FE91915D40C00E94824 /* DHBookmarksPickerHandler.m */; };
 		47D3D85019139CFA00885F05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D3D84F19139CFA00885F05 /* Foundation.framework */; };
 		47D3D85219139CFA00885F05 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D3D85119139CFA00885F05 /* CoreGraphics.framework */; };
 		47D3D85419139CFA00885F05 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D3D85319139CFA00885F05 /* UIKit.framework */; };
@@ -39,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		47107FE51915CBB700E94824 /* DHRoundsPickerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHRoundsPickerHandler.h; sourceTree = "<group>"; };
+		47107FE61915CBB700E94824 /* DHRoundsPickerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHRoundsPickerHandler.m; sourceTree = "<group>"; };
+		47107FE81915D40C00E94824 /* DHBookmarksPickerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHBookmarksPickerHandler.h; sourceTree = "<group>"; };
+		47107FE91915D40C00E94824 /* DHBookmarksPickerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHBookmarksPickerHandler.m; sourceTree = "<group>"; };
+		47107FEB1915F0A900E94824 /* DHBookmarksPickerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHBookmarksPickerDelegate.h; sourceTree = "<group>"; };
+		47107FEC1916050700E94824 /* DHRoundsPickerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHRoundsPickerDelegate.h; sourceTree = "<group>"; };
 		47D3D84C19139CFA00885F05 /* iBcryptPwdHash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBcryptPwdHash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47D3D84F19139CFA00885F05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		47D3D85119139CFA00885F05 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -135,6 +143,12 @@
 				47D3D86819139CFB00885F05 /* DHViewController.m */,
 				47D3D8911913CE6F00885F05 /* DHPwdHashUtil.h */,
 				47D3D8921913CE6F00885F05 /* DHPwdHashUtil.m */,
+				47107FE51915CBB700E94824 /* DHRoundsPickerHandler.h */,
+				47107FE61915CBB700E94824 /* DHRoundsPickerHandler.m */,
+				47107FEC1916050700E94824 /* DHRoundsPickerDelegate.h */,
+				47107FE81915D40C00E94824 /* DHBookmarksPickerHandler.h */,
+				47107FE91915D40C00E94824 /* DHBookmarksPickerHandler.m */,
+				47107FEB1915F0A900E94824 /* DHBookmarksPickerDelegate.h */,
 				47D3D86A19139CFB00885F05 /* Images.xcassets */,
 				47D3D85619139CFB00885F05 /* Supporting Files */,
 			);
@@ -289,6 +303,8 @@
 				47D3D86919139CFB00885F05 /* DHViewController.m in Sources */,
 				47D3D8931913CE6F00885F05 /* DHPwdHashUtil.m in Sources */,
 				47D3D85C19139CFB00885F05 /* main.m in Sources */,
+				47107FE71915CBB700E94824 /* DHRoundsPickerHandler.m in Sources */,
+				47107FEA1915D40C00E94824 /* DHBookmarksPickerHandler.m in Sources */,
 				47D3D88F1913B8BA00885F05 /* JFRandom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
