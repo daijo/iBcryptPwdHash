@@ -10,13 +10,15 @@
 
 @interface DHViewController : UIViewController
 
-@property IBOutlet UILabel* infoLabel;
-@property IBOutlet UILabel* hashedPasswordLabel;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
-@property IBOutlet UITextField* addressField;
-@property IBOutlet UITextField* saltField;
-@property IBOutlet UITextField* passwordField;
-@property IBOutlet UIButton* createButton;
+@property (strong, nonatomic) IBOutlet UILabel* infoLabel;
+@property (strong, nonatomic) IBOutlet UILabel* hashedPasswordLabel;
+
+@property (strong, nonatomic) IBOutlet UITextField* addressField;
+@property (strong, nonatomic) IBOutlet UITextField* saltField;
+@property (strong, nonatomic) IBOutlet UITextField* passwordField;
+@property (strong, nonatomic) IBOutlet UIButton* createButton;
 
 - (IBAction)createAction:(id)sender;
 - (IBAction)settingsAction:(id)sender;

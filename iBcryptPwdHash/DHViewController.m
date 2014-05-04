@@ -21,6 +21,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    [self.bottomConstraint setConstant:13];
+    
     [self.hashedPasswordLabel setText:@""];
     
     // Get saved salt
@@ -71,6 +73,9 @@
         // save salt
     } else if (![salt hasPrefix:@"$2a$"]) {
         // invalid salt
+        [self inputEnabled:YES];
+        [self.infoLabel setText:@"Salt not valid. Remove to generate new one."];
+        return;
     }
     
     NSString* address = [self.addressField text];
@@ -80,16 +85,21 @@
     NSString* password = [self.passwordField text];
     NSString* toBeHashed = [domain stringByAppendingString:password];
     
-    NSString* hash = [JFBCrypt hashPassword:toBeHashed withSalt:salt];
-    NSString* result = [DHPwdHashUtil removeSalt:salt FromHash:hash];
-    result = [DHPwdHashUtil applySize:password.length + 2 AndAlphaNumerical:[DHPwdHashUtil isAlphaNumeric:password] ToPassword:result];
+    /* do the rest asyncronously */
     
-    // copy to clipboard
-    [self.infoLabel setText:@"Password copied to paste board."];
-    [self copyToPasteboard:result];
-    [self.hashedPasswordLabel setText:result];
-
-    [self inputEnabled:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSString* hash = [JFBCrypt hashPassword:toBeHashed withSalt:salt];
+        NSString* result = [DHPwdHashUtil removeSalt:salt FromHash:hash];
+        result = [DHPwdHashUtil applySize:password.length + 2 AndAlphaNumerical:[DHPwdHashUtil isAlphaNumeric:password] ToPassword:result];
+        
+        // copy to clipboard
+        [self.infoLabel setText:@"Password copied to paste board."];
+        [self copyToPasteboard:result];
+        [self.hashedPasswordLabel setText:result];
+        
+        [self inputEnabled:YES];
+    });
 }
 
 #pragma mark - Actions
