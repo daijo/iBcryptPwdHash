@@ -19,9 +19,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
-    [self.bottomConstraint setConstant:13];
+    [self.bottomConstraintCopyright setConstant:13];
+    [self.bottomConstraintBookmarks setConstant:0];
+    [self.bottomConstraintRounds setConstant:0];
+    
+    CGRect toolBarFrame = [self.toolBar frame];
+    toolBarFrame.origin.y = 20;
+    [self.toolBar setFrame:toolBarFrame];
     
     [self.hashedPasswordLabel setText:@""];
     
@@ -35,7 +40,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Helpers
@@ -83,12 +87,20 @@
     NSString* domain = [DHPwdHashUtil extractDomain:address];
     
     NSString* password = [self.passwordField text];
+    if (password.length == 0) {
+        // no entered password
+        [self inputEnabled:YES];
+        [self.infoLabel setText:@"Please enter a password to hash."];
+        return;
+    }
+    
     NSString* toBeHashed = [domain stringByAppendingString:password];
     
     /* do the rest asyncronously */
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
+        // do the hashing
         NSString* hash = [JFBCrypt hashPassword:toBeHashed withSalt:salt];
         NSString* result = [DHPwdHashUtil removeSalt:salt FromHash:hash];
         result = [DHPwdHashUtil applySize:password.length + 2 AndAlphaNumerical:[DHPwdHashUtil isAlphaNumeric:password] ToPassword:result];
@@ -114,13 +126,13 @@
 - (IBAction)settingsAction:(id)sender
 {
     NSLog(@"settingsAction");
-    // launch settings view controller
+    // show/hide rounds pop-over/spinner
 }
 
 - (IBAction)bookmarksAction:(id)sender
 {
     NSLog(@"bookmarksAction");
-    // show bookmarks pop-over/spinner
+    // show/hide bookmarks pop-over/spinner
 }
 
 @end

@@ -10,7 +10,11 @@
 
 @interface DHViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintCopyright;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintBookmarks;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintRounds;
+
+@property (strong, nonatomic) IBOutlet UIToolbar* toolBar;
 
 @property (strong, nonatomic) IBOutlet UILabel* infoLabel;
 @property (strong, nonatomic) IBOutlet UILabel* hashedPasswordLabel;
@@ -19,6 +23,9 @@
 @property (strong, nonatomic) IBOutlet UITextField* saltField;
 @property (strong, nonatomic) IBOutlet UITextField* passwordField;
 @property (strong, nonatomic) IBOutlet UIButton* createButton;
+
+@property (strong, nonatomic) IBOutlet UIPickerView* bookmarksPicker;
+@property (strong, nonatomic) IBOutlet UIPickerView* roundsPicker;
 
 - (IBAction)createAction:(id)sender;
 - (IBAction)settingsAction:(id)sender;
