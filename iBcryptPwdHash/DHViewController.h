@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "DHRoundsPickerHandler.h"
+#import "DHRoundsPickerDelegate.h"
 #import "DHBookmarksPickerHandler.h"
 #import "DHBookmarksPickerDelegate.h"
 
-@interface DHViewController : UIViewController <DHBookmarksPickerDelegate>
+@interface DHViewController : UIViewController <DHBookmarksPickerDelegate, DHRoundsPickerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) DHRoundsPickerHandler* roundsPickerHandler;
 @property (strong, nonatomic) DHBookmarksPickerHandler* bookmarksPickerHandler;

@@ -43,6 +43,7 @@
     [self.toolBar setFrame:toolBarFrame];
     
     [self.hashedPasswordLabel setText:@""];
+    self.passwordField.delegate = self;
     
     [self.addressField setText:@"http://www.example.com"];
     
@@ -133,7 +134,7 @@
         result = [DHPwdHashUtil applySize:password.length + 2 AndAlphaNumerical:[DHPwdHashUtil isAlphaNumeric:password] ToPassword:result];
         
         // copy to clipboard
-        [self.infoLabel setText:@"Password copied to paste board."];
+        [self.infoLabel setText:@"Password copied to clipboard."];
         [self copyToPasteboard:result];
         [self.hashedPasswordLabel setText:result];
         
@@ -242,6 +243,15 @@
 - (void)selectedRounds:(int)rounds WithSalt:(NSString*)salt
 {
     [self.saltField setText:salt];
+}
+
+#pragma mark - UITextfieldDelegate
+
+- (BOOL) textFieldShouldClear:(UITextField *)textField{
+    [self.infoLabel setText:@"Password erased from clipboard."];
+    [self copyToPasteboard:@""];
+    [self.hashedPasswordLabel setText:@""];
+    return YES;
 }
 
 @end
