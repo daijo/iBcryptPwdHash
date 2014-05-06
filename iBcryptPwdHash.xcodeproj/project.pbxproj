@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		47107FE71915CBB700E94824 /* DHRoundsPickerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 47107FE61915CBB700E94824 /* DHRoundsPickerHandler.m */; };
 		47107FEA1915D40C00E94824 /* DHBookmarksPickerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 47107FE91915D40C00E94824 /* DHBookmarksPickerHandler.m */; };
+		4786CA44191771BF0030DEA2 /* DHPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4786CA42191771BF0030DEA2 /* DHPickerViewController.m */; };
+		4786CA45191771BF0030DEA2 /* DHPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4786CA43191771BF0030DEA2 /* DHPickerViewController.xib */; };
 		47D3D85019139CFA00885F05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D3D84F19139CFA00885F05 /* Foundation.framework */; };
 		47D3D85219139CFA00885F05 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D3D85119139CFA00885F05 /* CoreGraphics.framework */; };
 		47D3D85419139CFA00885F05 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D3D85319139CFA00885F05 /* UIKit.framework */; };
@@ -47,6 +49,9 @@
 		47107FE91915D40C00E94824 /* DHBookmarksPickerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHBookmarksPickerHandler.m; sourceTree = "<group>"; };
 		47107FEB1915F0A900E94824 /* DHBookmarksPickerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHBookmarksPickerDelegate.h; sourceTree = "<group>"; };
 		47107FEC1916050700E94824 /* DHRoundsPickerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHRoundsPickerDelegate.h; sourceTree = "<group>"; };
+		4786CA41191771BF0030DEA2 /* DHPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHPickerViewController.h; sourceTree = "<group>"; };
+		4786CA42191771BF0030DEA2 /* DHPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPickerViewController.m; sourceTree = "<group>"; };
+		4786CA43191771BF0030DEA2 /* DHPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DHPickerViewController.xib; sourceTree = "<group>"; };
 		47D3D84C19139CFA00885F05 /* iBcryptPwdHash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBcryptPwdHash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47D3D84F19139CFA00885F05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		47D3D85119139CFA00885F05 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -149,6 +154,9 @@
 				47107FE81915D40C00E94824 /* DHBookmarksPickerHandler.h */,
 				47107FE91915D40C00E94824 /* DHBookmarksPickerHandler.m */,
 				47107FEB1915F0A900E94824 /* DHBookmarksPickerDelegate.h */,
+				4786CA41191771BF0030DEA2 /* DHPickerViewController.h */,
+				4786CA42191771BF0030DEA2 /* DHPickerViewController.m */,
+				4786CA43191771BF0030DEA2 /* DHPickerViewController.xib */,
 				47D3D86A19139CFB00885F05 /* Images.xcassets */,
 				47D3D85619139CFB00885F05 /* Supporting Files */,
 			);
@@ -246,6 +254,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "___FULLUSERNAME___";
 				TargetAttributes = {
+					47D3D84B19139CFA00885F05 = {
+						DevelopmentTeam = 3B552G5W5B;
+					};
 					47D3D86F19139CFC00885F05 = {
 						TestTargetID = 47D3D84B19139CFA00885F05;
 					};
@@ -277,6 +288,7 @@
 			files = (
 				47D3D8901913B8BA00885F05 /* README in Resources */,
 				47D3D86619139CFB00885F05 /* Main_iPad.storyboard in Resources */,
+				4786CA45191771BF0030DEA2 /* DHPickerViewController.xib in Resources */,
 				47D3D86B19139CFB00885F05 /* Images.xcassets in Resources */,
 				47D3D86319139CFB00885F05 /* Main_iPhone.storyboard in Resources */,
 				47D3D85A19139CFB00885F05 /* InfoPlist.strings in Resources */,
@@ -298,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4786CA44191771BF0030DEA2 /* DHPickerViewController.m in Sources */,
 				47D3D86019139CFB00885F05 /* DHAppDelegate.m in Sources */,
 				47D3D88E1913B8BA00885F05 /* JFBCrypt.m in Sources */,
 				47D3D86919139CFB00885F05 /* DHViewController.m in Sources */,
@@ -440,6 +453,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iBcryptPwdHash/iBcryptPwdHash-Prefix.pch";
 				INFOPLIST_FILE = "iBcryptPwdHash/iBcryptPwdHash-Info.plist";
@@ -453,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iBcryptPwdHash/iBcryptPwdHash-Prefix.pch";
 				INFOPLIST_FILE = "iBcryptPwdHash/iBcryptPwdHash-Info.plist";

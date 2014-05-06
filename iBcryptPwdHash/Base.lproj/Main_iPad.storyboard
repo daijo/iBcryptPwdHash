@@ -16,9 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D4s-J9-L6o">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D4s-J9-L6o">
                                 <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="kLv-bj-Men"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem systemItem="bookmarks" id="krz-nc-pFQ">
                                         <connections>
@@ -110,8 +113,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3xA-Wg-svS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="20" id="3FD-Yy-bDU"/>
+                            <constraint firstItem="3xA-Wg-svS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3FD-Yy-bDU"/>
                             <constraint firstItem="MiS-Mf-AKX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4DR-M9-GmE"/>
+                            <constraint firstItem="MiS-Mf-AKX" firstAttribute="top" secondItem="D4s-J9-L6o" secondAttribute="bottom" constant="192" id="MFJ-Ye-a5k"/>
                             <constraint firstItem="D4s-J9-L6o" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="abn-Ve-zMS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3xA-Wg-svS" secondAttribute="bottom" constant="20" id="fNo-Zc-8Nr"/>
                             <constraint firstAttribute="trailing" secondItem="D4s-J9-L6o" secondAttribute="trailing" id="vW5-j6-5sN"/>
@@ -119,11 +123,15 @@
                     </view>
                     <connections>
                         <outlet property="addressField" destination="Tju-eC-tdn" id="L4f-3k-asz"/>
+                        <outlet property="bookmarksButton" destination="krz-nc-pFQ" id="POd-xp-bLS"/>
                         <outlet property="createButton" destination="001-3z-1FG" id="mYq-Ah-uB2"/>
                         <outlet property="hashedPasswordLabel" destination="nyr-ED-wir" id="UFl-ac-fTt"/>
                         <outlet property="infoLabel" destination="4Pa-ox-cp5" id="Q7e-CW-7WZ"/>
                         <outlet property="passwordField" destination="29y-xg-qw4" id="xts-s1-xQp"/>
+                        <outlet property="roundsButton" destination="fC6-4M-iyg" id="Ca2-Sg-9Jc"/>
                         <outlet property="saltField" destination="fG7-vO-VMI" id="qfk-l8-W3p"/>
+                        <outlet property="toolBar" destination="D4s-J9-L6o" id="9uq-za-lbF"/>
+                        <outlet property="topConstraintInputIpad" destination="MFJ-Ye-a5k" id="AFN-qy-2MW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

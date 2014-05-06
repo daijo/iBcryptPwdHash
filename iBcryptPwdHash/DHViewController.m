@@ -10,12 +10,18 @@
 #import "JFBCrypt.h"
 #import "DHPwdHashUtil.h"
 
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
+
+static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
+
 @interface DHViewController ()
 
 @end
 
 @implementation DHViewController {
     BOOL mRoundsAreVisible, mBookmarksAreVisible;
+    BOOL mIpadInputShifted;
 }
 
 - (void)viewDidLoad
@@ -23,14 +29,26 @@
     [super viewDidLoad];
     
     self.roundsPickerHandler = [[DHRoundsPickerHandler alloc] initWithDelegate:self];
-    self.roundsPicker.dataSource = self.roundsPickerHandler;
-    self.roundsPicker.delegate = self.roundsPickerHandler;
-    [self.roundsPicker selectRow:self.roundsPickerHandler.defaultRow inComponent:0 animated:NO];
+    if (IDIOM == IPAD) {
+        self.roundsPickerController = [[DHPickerViewController alloc] init];
+        self.roundsPopoverController = [[UIPopoverController alloc] initWithContentViewController:self.roundsPickerController];
+        [self.roundsPickerController addPickerHandler:self.roundsPickerHandler];
+    } else {
+        self.roundsPicker.dataSource = self.roundsPickerHandler;
+        self.roundsPicker.delegate = self.roundsPickerHandler;
+        [self.roundsPicker selectRow:self.roundsPickerHandler.defaultRow inComponent:0 animated:NO];
+    }
     [self.saltField setText:[self.roundsPickerHandler getCurrentSalt]];
     
     self.bookmarksPickerHandler = [[DHBookmarksPickerHandler alloc] initWithPicker:self.bookmarksPicker AndDelegate:self];
-    self.bookmarksPicker.dataSource = self.bookmarksPickerHandler;
-    self.bookmarksPicker.delegate = self.bookmarksPickerHandler;
+    if (IDIOM == IPAD) {
+        self.bookmarksPickerController = [[DHPickerViewController alloc] init];
+        self.bookmarksPopoverController = [[UIPopoverController alloc] initWithContentViewController:self.bookmarksPickerController];
+        [self.bookmarksPickerController addPickerHandler:self.bookmarksPickerHandler];
+    } else {
+        self.bookmarksPicker.dataSource = self.bookmarksPickerHandler;
+        self.bookmarksPicker.delegate = self.bookmarksPickerHandler;
+    }
     
     [self.bottomConstraintCopyright setConstant:13];
     [self.bottomConstraintBookmarks setConstant:0];
@@ -51,6 +69,22 @@
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
+    
+    if (IDIOM == IPAD) {
+        
+        if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+        {
+            self.topConstraintInputIpad.constant -= IPAD_LANDSCAPE_INPUT_SHIFT;
+            mIpadInputShifted = YES;
+        } else {
+            mIpadInputShifted = NO;
+        }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(orientationDidChange:)
+                                                     name:UIDeviceOrientationDidChangeNotification
+                                                   object:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,7 +176,25 @@
     });
 }
 
-#pragma mark - Animations
+#pragma mark - Popovers (iPad)
+
+- (void)showBookmarksPopover
+{
+    if ([self.roundsPopoverController isPopoverVisible]) {
+        [self.roundsPopoverController dismissPopoverAnimated:YES];
+    }
+    [self.bookmarksPopoverController presentPopoverFromBarButtonItem:self.bookmarksButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (void)showRoundsPopover
+{
+    if ([self.bookmarksPopoverController isPopoverVisible]) {
+        [self.bookmarksPopoverController dismissPopoverAnimated:YES];
+    }
+    [self.roundsPopoverController presentPopoverFromBarButtonItem:self.roundsButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+#pragma mark - Animations (iPhone)
 
 - (void)hideRounds {
     [self.view layoutIfNeeded];
@@ -155,12 +207,14 @@
 }
 
 - (void)showRounds {
+    
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:0.5
                      animations:^{
                          self.bottomConstraintRounds.constant = 162;
                          [self.view layoutIfNeeded];
                      }];
+
     mRoundsAreVisible = TRUE;
 }
 
@@ -175,12 +229,13 @@
 }
 
 - (void)showBookmarks {
+    
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:0.5
-                     animations:^{
-                         self.bottomConstraintBookmarks.constant = 162;
-                         [self.view layoutIfNeeded];
-                     }];
+                    animations:^{
+                        self.bottomConstraintBookmarks.constant = 162;
+                        [self.view layoutIfNeeded];
+                        }];
     mBookmarksAreVisible = TRUE;
 }
 
@@ -197,9 +252,16 @@
 {
     NSLog(@"settingsAction");
     // show/hide rounds pop-over/spinner
-    [self allTextFieldResign];
+    
+    if (IDIOM == IPAD) {
+        [self showRoundsPopover];
+        return;
+    } else {
+        [self allTextFieldResign];
+    }
+    
     if (mRoundsAreVisible) {
-        [self hideRounds];
+            [self hideRounds];
     } else {
         if (mBookmarksAreVisible) {
             [self hideBookmarks];
@@ -212,7 +274,14 @@
 {
     NSLog(@"bookmarksAction");
     // show/hide bookmarks pop-over/spinner
-    [self allTextFieldResign];
+    
+    if (IDIOM == IPAD) {
+        [self showBookmarksPopover];
+        return;
+    } else {
+        [self allTextFieldResign];
+    }
+    
     if (mBookmarksAreVisible) {
         [self hideBookmarks];
     } else {
@@ -229,6 +298,32 @@
 {
     [self hideBookmarks];
     [self hideRounds];
+}
+
+- (void)orientationDidChange:(NSNotification *)notification
+{
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    switch (orientation)
+    {
+        case UIDeviceOrientationLandscapeLeft:
+        case UIDeviceOrientationLandscapeRight:
+            if (!mIpadInputShifted) {
+                self.topConstraintInputIpad.constant -= IPAD_LANDSCAPE_INPUT_SHIFT;
+                mIpadInputShifted = YES;
+            }
+            break;
+            
+        case UIDeviceOrientationFaceUp:
+        case UIDeviceOrientationFaceDown:
+        case UIDeviceOrientationPortrait:
+        case UIDeviceOrientationPortraitUpsideDown:
+        case UIDeviceOrientationUnknown:
+        default:
+            if (mIpadInputShifted) {
+                self.topConstraintInputIpad.constant += IPAD_LANDSCAPE_INPUT_SHIFT;
+                mIpadInputShifted = NO;
+            }
+    }
 }
 
 #pragma mark - DHBookmarkPickerDelegate

@@ -11,17 +11,27 @@
 #import "DHRoundsPickerDelegate.h"
 #import "DHBookmarksPickerHandler.h"
 #import "DHBookmarksPickerDelegate.h"
+#import "DHPickerViewController.h"
 
 @interface DHViewController : UIViewController <DHBookmarksPickerDelegate, DHRoundsPickerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) DHRoundsPickerHandler* roundsPickerHandler;
 @property (strong, nonatomic) DHBookmarksPickerHandler* bookmarksPickerHandler;
 
+@property (strong, nonatomic) DHPickerViewController* roundsPickerController;
+@property (strong, nonatomic) UIPopoverController* roundsPopoverController;
+
+@property (strong, nonatomic) DHPickerViewController* bookmarksPickerController;
+@property (strong, nonatomic) UIPopoverController* bookmarksPopoverController;
+
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintCopyright;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintBookmarks;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintRounds;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topConstraintInputIpad;
 
 @property (strong, nonatomic) IBOutlet UIToolbar* toolBar;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem* bookmarksButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem* roundsButton;
 
 @property (strong, nonatomic) IBOutlet UILabel* infoLabel;
 @property (strong, nonatomic) IBOutlet UILabel* hashedPasswordLabel;
