@@ -14,7 +14,7 @@ Select number of rounds to use by pressing the cogwheel toolbar button. More rou
 
 When using the first time leave the salt field empty to generate a new random salt or copy in a previously used salt. The generated salt is fixed to a number of rounds. The salt field can be emptied to generate a new salt at any time. The app will remember your salts (per rounds) but it might be a good idea to save it somewhere else.
 
-Enter the password to hash and press 'Create'. Wait until the password has been created then paste the crated password into the websites password field. Pressing the clear button in the password filed will clear the generated password from the screen and clipboard.
+Enter the password to hash and press 'Create'. Wait until the password has been created then paste the created password into the websites/apps password field. Pressing the clear button in the password field will clear the generated password from the screen and clipboard.
 
 Credits
 -------
