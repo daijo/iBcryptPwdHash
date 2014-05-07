@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintRounds;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topConstraintInputIpad;
 
+@property (strong, nonatomic) IBOutlet UIView* tapView;
 @property (strong, nonatomic) IBOutlet UIToolbar* toolBar;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem* bookmarksButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem* roundsButton;
@@ -43,6 +44,8 @@
 
 @property (strong, nonatomic) IBOutlet UIPickerView* bookmarksPicker;
 @property (strong, nonatomic) IBOutlet UIPickerView* roundsPicker;
+
+@property (strong, nonatomic) UIGestureRecognizer* tapGestureRecognizer;
 
 - (IBAction)createAction:(id)sender;
 - (IBAction)roundsAction:(id)sender;

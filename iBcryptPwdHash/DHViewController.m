@@ -69,6 +69,10 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
     [self.addressField setText:@"http://www.example.com"];
     [self.createButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                        action:@selector(handleTaps:)];
+    [self.tapView addGestureRecognizer:self.tapGestureRecognizer];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
@@ -372,6 +376,19 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
         [self create];
     }
     return YES;
+}
+
+#pragma mark - UITapGestureRecognizer
+
+- (void) handleTaps:(UITapGestureRecognizer*)paramSender
+{
+    [self allTextFieldResign];
+    if (mRoundsAreVisible) {
+        [self hideRounds];
+    }
+    if (mBookmarksAreVisible) {
+        [self hideBookmarks];
+    }
 }
 
 @end
