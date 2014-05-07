@@ -128,6 +128,16 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
     }
 }
 
+- (void)updateWithResult:(NSString*)result
+{
+    // copy to clipboard
+    [self.infoLabel setText:@"Password copied to clipboard."];
+    [self copyToPasteboard:result];
+    [self.hashedPasswordLabel setText:result];
+    
+    [self inputEnabled:YES];
+}
+
 - (void)create
 {
     [self.infoLabel setText:@"Please wait."];
@@ -180,12 +190,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
         NSString* result = [DHPwdHashUtil removeSalt:salt FromHash:hash];
         result = [DHPwdHashUtil applySize:password.length + 2 AndAlphaNumerical:[DHPwdHashUtil isAlphaNumeric:password] ToPassword:result];
         
-        // copy to clipboard
-        [self.infoLabel setText:@"Password copied to clipboard."];
-        [self copyToPasteboard:result];
-        [self.hashedPasswordLabel setText:result];
-        
-        [self inputEnabled:YES];
+        [self performSelectorOnMainThread:@selector(updateWithResult:) withObject:result waitUntilDone:NO];
     });
 }
 
