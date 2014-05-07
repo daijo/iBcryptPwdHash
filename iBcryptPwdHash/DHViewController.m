@@ -62,6 +62,8 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
     [self.toolBar setFrame:toolBarFrame];
     
     [self.hashedPasswordLabel setText:@""];
+    self.addressField.delegate = self;
+    self.saltField.delegate = self;
     self.passwordField.delegate = self;
     
     [self.addressField setText:@"http://www.example.com"];
@@ -349,9 +351,26 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
 #pragma mark - UITextfieldDelegate
 
 - (BOOL) textFieldShouldClear:(UITextField *)textField{
-    [self.infoLabel setText:@"Password erased from clipboard."];
-    [self copyToPasteboard:@""];
-    [self.hashedPasswordLabel setText:@""];
+    
+    if (textField == self.passwordField) {
+        [self.infoLabel setText:@"Password erased from clipboard."];
+        [self copyToPasteboard:@""];
+        [self.hashedPasswordLabel setText:@""];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if (textField == self.addressField) {
+        [self.addressField resignFirstResponder];
+        [self.saltField becomeFirstResponder];
+    } else if (textField == self.saltField) {
+        [self.saltField resignFirstResponder];
+        [self.passwordField becomeFirstResponder];
+    } else if (textField == self.passwordField) {
+        [self create];
+    }
     return YES;
 }
 
