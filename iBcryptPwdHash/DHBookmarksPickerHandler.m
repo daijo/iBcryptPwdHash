@@ -9,9 +9,7 @@
 #import "DHBookmarksPickerHandler.h"
 #import "DHBookmarksPickerDelegate.h"
 
-@implementation DHBookmarksPickerHandler {
-    UIPickerView* mPicker;
-}
+@implementation DHBookmarksPickerHandler
 
 - (id)init
 {
@@ -27,7 +25,7 @@
     self = [self init];
     if (self) {
         self.delegate = delegate;
-        mPicker = picker;
+        self.picker = picker;
     }
     return self;
 }
@@ -36,7 +34,7 @@
 {
     if (![self.bookmarks containsObject:bookmark]) {
         [self.bookmarks addObject:bookmark];
-        [mPicker reloadAllComponents];
+        [self.picker reloadAllComponents];
         [self persistBookmarks:self.bookmarks];
     }
 }

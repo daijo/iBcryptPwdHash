@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) NSMutableArray *bookmarks;
 @property (weak, nonatomic) id<DHBookmarksPickerDelegate> delegate;
+@property (weak, nonatomic) UIPickerView* picker;
 
 - (DHBookmarksPickerHandler*)initWithPicker:(UIPickerView*)picker AndDelegate:(id<DHBookmarksPickerDelegate>)delegate;
 

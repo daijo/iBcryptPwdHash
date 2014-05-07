@@ -46,6 +46,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
         self.bookmarksPickerController = [[DHPickerViewController alloc] init];
         self.bookmarksPopoverController = [[UIPopoverController alloc] initWithContentViewController:self.bookmarksPickerController];
         [self.bookmarksPickerController addPickerHandler:self.bookmarksPickerHandler];
+        self.bookmarksPickerHandler.picker = self.bookmarksPickerController.picker;
     } else {
         self.bookmarksPicker.dataSource = self.bookmarksPickerHandler;
         self.bookmarksPicker.delegate = self.bookmarksPickerHandler;
