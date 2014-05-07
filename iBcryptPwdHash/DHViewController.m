@@ -65,6 +65,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
     self.passwordField.delegate = self;
     
     [self.addressField setText:@"http://www.example.com"];
+    [self.createButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -110,10 +111,10 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
 
 - (void)inputEnabled:(BOOL)enabled
 {
-    [self.addressField setUserInteractionEnabled:enabled];
-    [self.saltField setUserInteractionEnabled:enabled];
-    [self.passwordField setUserInteractionEnabled:enabled];
-    [self.createButton setUserInteractionEnabled:enabled];
+    self.addressField.enabled = enabled;
+    self.saltField.enabled = enabled;
+    self.passwordField.enabled = enabled;
+    self.createButton.enabled = enabled;
     
     if (!enabled) {
         [self allTextFieldResign];
@@ -130,14 +131,14 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
     if (salt.length == 0) {
         salt = [JFBCrypt generateSaltWithNumberOfRounds:self.roundsPickerHandler.selectedRounds];
         [self.saltField setText:salt];
-        [self.roundsPickerHandler saveSalt:salt ForRounds:self.roundsPickerHandler.selectedRounds];
-        // save salt
-    } else if (![salt hasPrefix:@"$2a$"]) {
+    } else if (![salt hasPrefix:@"$2a$"]
+               || salt.length != 29) {
         // invalid salt
         [self inputEnabled:YES];
         [self.infoLabel setText:@"Salt not valid. Remove to generate new one."];
         return;
     }
+    [self.roundsPickerHandler saveSalt:salt ForRounds:self.roundsPickerHandler.selectedRounds];
     
     NSString* address = [self.addressField text];
     NSString* domain = [DHPwdHashUtil extractDomain:address];
@@ -158,6 +159,10 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
     }
     
     NSString* toBeHashed = [domain stringByAppendingString:password];
+    
+    // clear previous
+    [self copyToPasteboard:@""];
+    [self.hashedPasswordLabel setText:@""];
     
     /* do the rest asyncronously */
     
