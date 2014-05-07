@@ -33,6 +33,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
         self.roundsPickerController = [[DHPickerViewController alloc] init];
         self.roundsPopoverController = [[UIPopoverController alloc] initWithContentViewController:self.roundsPickerController];
         [self.roundsPickerController addPickerHandler:self.roundsPickerHandler];
+        [self.roundsPickerController.picker selectRow:self.roundsPickerHandler.defaultRow inComponent:0 animated:NO];
     } else {
         self.roundsPicker.dataSource = self.roundsPickerHandler;
         self.roundsPicker.delegate = self.roundsPickerHandler;
