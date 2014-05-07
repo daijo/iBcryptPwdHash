@@ -24,26 +24,26 @@
 @property (strong, nonatomic) DHPickerViewController* bookmarksPickerController;
 @property (strong, nonatomic) UIPopoverController* bookmarksPopoverController;
 
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintCopyright;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintBookmarks;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintRounds;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topConstraintInputIpad;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintCopyright;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintBookmarks;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraintRounds;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraintInputIpad;
 
-@property (strong, nonatomic) IBOutlet UIView* tapView;
-@property (strong, nonatomic) IBOutlet UIToolbar* toolBar;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem* bookmarksButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem* roundsButton;
+@property (weak, nonatomic) IBOutlet UIView* tapView;
+@property (weak, nonatomic) IBOutlet UIToolbar* toolBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* bookmarksButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* roundsButton;
 
-@property (strong, nonatomic) IBOutlet UILabel* infoLabel;
-@property (strong, nonatomic) IBOutlet UILabel* hashedPasswordLabel;
+@property (weak, nonatomic) IBOutlet UILabel* infoLabel;
+@property (weak, nonatomic) IBOutlet UILabel* hashedPasswordLabel;
 
-@property (strong, nonatomic) IBOutlet UITextField* addressField;
-@property (strong, nonatomic) IBOutlet UITextField* saltField;
-@property (strong, nonatomic) IBOutlet UITextField* passwordField;
-@property (strong, nonatomic) IBOutlet UIButton* createButton;
+@property (weak, nonatomic) IBOutlet UITextField* addressField;
+@property (weak, nonatomic) IBOutlet UITextField* saltField;
+@property (weak, nonatomic) IBOutlet UITextField* passwordField;
+@property (weak, nonatomic) IBOutlet UIButton* createButton;
 
-@property (strong, nonatomic) IBOutlet UIPickerView* bookmarksPicker;
-@property (strong, nonatomic) IBOutlet UIPickerView* roundsPicker;
+@property (weak, nonatomic) IBOutlet UIPickerView* bookmarksPicker;
+@property (weak, nonatomic) IBOutlet UIPickerView* roundsPicker;
 
 @property (strong, nonatomic) UIGestureRecognizer* tapGestureRecognizer;
 
