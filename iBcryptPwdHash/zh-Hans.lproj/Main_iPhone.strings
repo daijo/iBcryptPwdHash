@@ -1,0 +1,27 @@
+
+/* Class = "IBUILabel"; text = "© 2014 Daniel Hjort - www.danielhjort.net"; ObjectID = "3ik-19-Cqq"; */
+"3ik-19-Cqq.text" = "© 2014 Daniel Hjort - www.danielhjort.net";
+
+/* Class = "IBUILabel"; text = "Address"; ObjectID = "B4q-CA-VvK"; */
+"B4q-CA-VvK.text" = "网址";
+
+/* Class = "IBUIButton"; normalTitle = "Create"; ObjectID = "BCt-Mu-FJ9"; */
+"BCt-Mu-FJ9.normalTitle" = "生成";
+
+/* Class = "IBUITextField"; text = "http://"; ObjectID = "PMF-fw-jZP"; */
+"PMF-fw-jZP.text" = "http://";
+
+/* Class = "IBUILabel"; text = "Salt"; ObjectID = "TU7-vB-KGt"; */
+"TU7-vB-KGt.text" = "盐";
+
+/* Class = "IBUILabel"; text = "Leave salt empty to generate."; ObjectID = "b9I-Lr-Vgv"; */
+"b9I-Lr-Vgv.text" = "生成新盐，请在盐处留空白。";
+
+/* Class = "IBUILabel"; text = "Password"; ObjectID = "lKE-rY-zIz"; */
+"lKE-rY-zIz.text" = "密码";
+
+/* Class = "IBUIBarButtonItem"; title = "⚙"; ObjectID = "miJ-xV-r8S"; */
+"miJ-xV-r8S.title" = "⚙";
+
+/* Class = "IBUILabel"; text = "Generated Password"; ObjectID = "zLk-Z2-QED"; */
+"zLk-Z2-QED.text" = "生成后的密码";

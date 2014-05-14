@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  iBcryptPwdHash
+
+  Created by Daniel Hjort on 5/14/14.
+  Copyright (c) 2014 Daniel Hjort. All rights reserved.
+*/
+
+"PwCopiedKey" = "密码已复制，请直接粘贴。";
+"PleaseWaitKey" = "请稍等";
+"SaltNotValidKey" = "盐无效。删除后生成新盐。";
+"EnterSiteKey" = "请输入网址。";
+"EnterPasswordKey" = "请输入密码。";
+"PasswordErasedKey" = "剪贴板上密码已消除。";

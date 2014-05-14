@@ -131,7 +131,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
 - (void)updateWithResult:(NSString*)result
 {
     // copy to clipboard
-    [self.infoLabel setText:@"Password copied to clipboard."];
+    [self.infoLabel setText:NSLocalizedString(@"PwCopiedKey", @"")];
     [self copyToPasteboard:result];
     [self.hashedPasswordLabel setText:result];
     
@@ -140,7 +140,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
 
 - (void)create
 {
-    [self.infoLabel setText:@"Please wait."];
+    [self.infoLabel setText:NSLocalizedString(@"PleaseWaitKey", @"")];
     [self inputEnabled:NO];
 
     // check salt
@@ -152,7 +152,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
                || salt.length != 29) {
         // invalid salt
         [self inputEnabled:YES];
-        [self.infoLabel setText:@"Salt not valid. Remove to generate new one."];
+        [self.infoLabel setText:NSLocalizedString(@"SaltNotValidKey", @"")];
         return;
     }
     [self.roundsPickerHandler saveSalt:salt ForRounds:self.roundsPickerHandler.selectedRounds];
@@ -162,7 +162,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
     if (domain.length == 0) {
         // no entered password
         [self inputEnabled:YES];
-        [self.infoLabel setText:@"Please enter a site address."];
+        [self.infoLabel setText:NSLocalizedString(@"EnterSiteKey", @"")];
         return;
     }
     [self.bookmarksPickerHandler saveBookmark:address];
@@ -171,7 +171,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
     if (password.length == 0) {
         // no entered password
         [self inputEnabled:YES];
-        [self.infoLabel setText:@"Please enter a password to hash."];
+        [self.infoLabel setText:NSLocalizedString(@"EnterPasswordKey", @"")];
         return;
     }
     
@@ -363,7 +363,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
 - (BOOL) textFieldShouldClear:(UITextField *)textField{
     
     if (textField == self.passwordField) {
-        [self.infoLabel setText:@"Password erased from clipboard."];
+        [self.infoLabel setText:NSLocalizedString(@"PasswordErasedKey", @"")];
         [self copyToPasteboard:@""];
         [self.hashedPasswordLabel setText:@""];
     }

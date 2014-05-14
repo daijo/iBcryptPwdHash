@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  iBcryptPwdHash
+ 
+  English.
+
+  Created by Daniel Hjort on 5/14/14.
+  Copyright (c) 2014 Daniel Hjort. All rights reserved.
+*/
+
+"PwCopiedKey" = "Password copied to clipboard.";
+"PleaseWaitKey" = "Please wait.";
+"SaltNotValidKey" = "Salt not valid. Remove to generate new one.";
+"EnterSiteKey" = "Please enter a site address.";
+"EnterPasswordKey" = "Please enter a password to hash.";
+"PasswordErasedKey" = "Password erased from clipboard.";
