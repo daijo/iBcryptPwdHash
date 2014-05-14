@@ -16,7 +16,15 @@
     self = [super init];
     if (self) {
         
-        self.roundNames = @[@"4 Rounds", @"6 Rounds", @"8 Rounds", @"10 Rounds", @"12 Rounds", @"14 Rounds", @"16 Rounds"];
+        NSString* localizedRounds = NSLocalizedString(@"RoundsKey", @"");
+        
+        self.roundNames = @[[NSString stringWithFormat:@"4 %@", localizedRounds],
+                            [NSString stringWithFormat:@"6 %@", localizedRounds],
+                            [NSString stringWithFormat:@"8 %@", localizedRounds],
+                            [NSString stringWithFormat:@"10 %@", localizedRounds],
+                            [NSString stringWithFormat:@"12 %@", localizedRounds],
+                            [NSString stringWithFormat:@"14 %@", localizedRounds],
+                            [NSString stringWithFormat:@"16 %@", localizedRounds]];
         self.roundValues = @[@4, @6, @8, @10, @12, @14, @16];
         self.selectedRounds = [self.roundValues[4] intValue];
         self.defaultRow = 4;

@@ -14,3 +14,4 @@
 "EnterSiteKey" = "Please enter a site address.";
 "EnterPasswordKey" = "Please enter a password to hash.";
 "PasswordErasedKey" = "Password erased from clipboard.";
+"RoundsKey" = "Rounds";
