@@ -54,11 +54,16 @@
 		4786CA41191771BF0030DEA2 /* DHPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHPickerViewController.h; sourceTree = "<group>"; };
 		4786CA42191771BF0030DEA2 /* DHPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHPickerViewController.m; sourceTree = "<group>"; };
 		4786CA43191771BF0030DEA2 /* DHPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DHPickerViewController.xib; sourceTree = "<group>"; };
+		47976B661923A54B00A214ED /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		47976B671923A54B00A214ED /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		47976B681923A54C00A214ED /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		47976B691923A54C00A214ED /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		47976B6A1923A54C00A214ED /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		47976B6B1923A7EA00A214ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		47C259881923449B00C415D5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main_iPhone.strings"; sourceTree = "<group>"; };
 		47C259891923449B00C415D5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main_iPad.strings"; sourceTree = "<group>"; };
 		47C2598A1923449B00C415D5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		47C2598B1923449B00C415D5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		47C2598D1923451800C415D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		47D3D84C19139CFA00885F05 /* iBcryptPwdHash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBcryptPwdHash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47D3D84F19139CFA00885F05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		47D3D85119139CFA00885F05 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -278,6 +283,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				sv,
 			);
 			mainGroup = 47D3D84319139CFA00885F05;
 			productRefGroup = 47D3D84D19139CFA00885F05 /* Products */;
@@ -354,8 +360,9 @@
 		47C2598E1923451800C415D5 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				47C2598D1923451800C415D5 /* en */,
 				47113D2819234CAF006051DB /* zh-Hans */,
+				47976B661923A54B00A214ED /* sv */,
+				47976B6B1923A7EA00A214ED /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -365,6 +372,7 @@
 			children = (
 				47D3D85919139CFB00885F05 /* en */,
 				47C2598A1923449B00C415D5 /* zh-Hans */,
+				47976B671923A54B00A214ED /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -374,6 +382,7 @@
 			children = (
 				47D3D86219139CFB00885F05 /* Base */,
 				47C259881923449B00C415D5 /* zh-Hans */,
+				47976B681923A54C00A214ED /* sv */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -383,6 +392,7 @@
 			children = (
 				47D3D86519139CFB00885F05 /* Base */,
 				47C259891923449B00C415D5 /* zh-Hans */,
+				47976B691923A54C00A214ED /* sv */,
 			);
 			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
@@ -392,6 +402,7 @@
 			children = (
 				47D3D87B19139CFC00885F05 /* en */,
 				47C2598B1923449B00C415D5 /* zh-Hans */,
+				47976B6A1923A54C00A214ED /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
