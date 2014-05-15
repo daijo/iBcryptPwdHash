@@ -214,17 +214,36 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
 
 #pragma mark - Animations (iPhone)
 
-- (void)hideRounds {
+- (void)hideCopyright
+{
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.copyrightLabel.alpha = 0;
+                     }];
+}
+
+- (void)showCopyright
+{
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.copyrightLabel.alpha = 0.5;
+                     }];
+}
+
+- (void)hideRounds
+{
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:0.5
                      animations:^{
                          self.bottomConstraintRounds.constant = 0;
                          [self.view layoutIfNeeded];
                      }];
+    [self showCopyright];
     mRoundsAreVisible = FALSE;
 }
 
-- (void)showRounds {
+- (void)showRounds
+{
     
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:0.5
@@ -232,21 +251,24 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
                          self.bottomConstraintRounds.constant = 162;
                          [self.view layoutIfNeeded];
                      }];
-
+    [self hideCopyright];
     mRoundsAreVisible = TRUE;
 }
 
-- (void)hideBookmarks {
+- (void)hideBookmarks
+{
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:0.5
                      animations:^{
                          self.bottomConstraintBookmarks.constant = 0;
                          [self.view layoutIfNeeded];
                      }];
+    [self showCopyright];
     mBookmarksAreVisible = FALSE;
 }
 
-- (void)showBookmarks {
+- (void)showBookmarks
+{
     
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:0.5
@@ -254,6 +276,7 @@ static const float IPAD_LANDSCAPE_INPUT_SHIFT = 120;
                         self.bottomConstraintBookmarks.constant = 162;
                         [self.view layoutIfNeeded];
                         }];
+    [self hideCopyright];
     mBookmarksAreVisible = TRUE;
 }
 

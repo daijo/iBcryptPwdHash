@@ -127,6 +127,7 @@
                         <outlet property="bottomConstraintBookmarks" destination="330-A6-p6B" id="SKi-0Z-jPA"/>
                         <outlet property="bottomConstraintCopyright" destination="M9E-xh-fWB" id="pAp-iy-LHU"/>
                         <outlet property="bottomConstraintRounds" destination="zyo-qu-g9b" id="nxv-pA-E1h"/>
+                        <outlet property="copyrightLabel" destination="3ik-19-Cqq" id="cN0-dN-F27"/>
                         <outlet property="createButton" destination="BCt-Mu-FJ9" id="FVR-vk-6f2"/>
                         <outlet property="hashedPasswordLabel" destination="zLk-Z2-QED" id="Brf-qE-UI8"/>
                         <outlet property="infoLabel" destination="b9I-Lr-Vgv" id="Qu7-F4-K3X"/>

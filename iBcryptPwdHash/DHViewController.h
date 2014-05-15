@@ -36,6 +36,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel* infoLabel;
 @property (weak, nonatomic) IBOutlet UILabel* hashedPasswordLabel;
+@property (weak, nonatomic) IBOutlet UILabel* copyrightLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField* addressField;
 @property (weak, nonatomic) IBOutlet UITextField* saltField;
